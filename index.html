@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="./index_files/styles.css">
+	<link rel="stylesheet" href="./index_files/home.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="Digger Man">
+	<meta property="og:image:alt" content="A shiny image of Digger Man">
+	<title> DiggerMan</title>
+	<meta name="description" content="Digger Man C++ Programmer">
+	<style>
+		footer {
+    position: absolute;
+    bottom: 1;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+    padding: 10px; /* Поля вокруг текста */
+}
+ 	#audio-player {
+            width: 300px;
+            margin: 20px;
+            
+        }
+        #audio-player::-webkit-media-controls-panel {
+            background-color: rgb(255, 255, 255); 
+        }
+
+        #audio-player::media-controls {
+            background-color: rgb(0, 0, 0); 
+        }
+    </style>
+</head>
+
+<body>
+	<nav class="" id="navbar-container">
+		<a class="branding" href="https://DiggerMan.ru/index.html">
+			<img aria-hidden="true" alt="Digger Man Logo" src="./index_files/Logo.png">
+			<p>Digger Man</p>
+		</a>
+		<hr aria-hidden="true">
+		
+		<div aria-hidden="true" id="navbar-items">
+			</a>
+			<a href="https://www.blast.hk/members/343182/" class="navbar-responsive-hide navbar-item navbar-icon">
+				<img alt="BH icon" class="navbar-responsive-hide" src="./index_files/bh.png">
+			</a>
+			<a href="https://github.com/DiggerMan-cpp/" class="navbar-responsive-hide navbar-item navbar-icon">
+				<img alt="GitHub icon" class="navbar-responsive-hide" src="./index_files/GitHub.png">
+			</a>
+			<a href="https://t.me/kernel86dll/" class="navbar-responsive-hide navbar-item navbar-icon">
+				<img alt="Telegram icon" class="navbar-responsive-hide" src="./index_files/tgwhite.png">
+			</a>
+			<a href="https://discord.gg/" class="navbar-responsive-hide navbar-item navbar-icon">
+				<img alt="Discord icon" class="navbar-responsive-hide" src="./index_files/Discord.png">
+			</a>
+			<div id="nav-dlbutton" class="navbar-item navbar-button not-active" onclick="downloadLatestCore()">
+				<span class="">Download</span>
+				<span class="material-symbols-outlined">download</span>
+			</div>
+			<span onclick="openNav()" id="navbar-burga" class="material-symbols-outlined navbar-item">menu</span>
+		</div>
+	</nav>
+	<div aria-hidden="true" class="body-divider" id="home">
+		<hr>
+		
+	</div>
+	<div class="body-container body-container-visible" id="s1">
+		<div aria-hidden="true" class="main-video">
+			<div aria-hidden="true" class="main-video">
+				<img src="./index_files/code.png" alt="Code Image" style="max-width: 100%; max-height: 100%; width: auto; height: auto;">
+			</div>
+			<audio id="audio-player" controls>
+				<source src="./index_files/lua.mp3" type="audio/mpeg">
+				Your browser does not support the audio element.
+			</audio>
+		
+			<script>
+				const audioPlayer = document.getElementById("audio-player");
+				function playAudio() {
+					audioPlayer.play();
+				}
+		
+				function pauseAudio() {
+					audioPlayer.pause();
+				}
+				function stopAudio() {
+					audioPlayer.pause();
+					audioPlayer.currentTime = 0;
+				}
+			</script>
+			<div class="e1" style="background: linear-gradient(197.37deg, #7450DB -0.38%, rgba(138, 234, 240, 0) 101.89%), linear-gradient(115.93deg, #3E88F6 4.86%, rgba(62, 180, 246, 0.33) 38.05%, rgba(62, 235, 246, 0) 74.14%), radial-gradient(56.47% 76.87% at 6.92% 7.55%, rgba(62, 136, 246, 0.7) 0%, rgba(62, 158, 246, 0.182) 52.16%, rgba(62, 246, 246, 0) 100%), linear-gradient(306.53deg, #2EE4E3 19.83%, rgba(46, 228, 227, 0) 97.33%); background-blend-mode: normal, normal, normal, normal, normal, normal; filter: blur(75px);">
+			</div>
+		</div>
+		<div class="body-container-1-right">
+			<div class="header-content">
+				<h1>C++ Programmer</h1>
+				<p>Digger Man
+				</p>
+			</div>
+			<div class="main-array">
+				<a id="dlbutton" class="button button-main" href="https://github.com/DiggerMan-cpp" target="_blank">
+					<span class="button-main-string">Github</span>
+				</a>
+				
+				</div>
+				
+				</a>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+	</body>
+	</html>
+	<div aria-hidden="true" class="body-divider" id="s2-divider">
+		
+		<hr>
+		<footer>
+			<p>&copy; ALL RIGHTS RESERVED DIGGER MAN 2023</p>
+			<p>&copy; Music: NEVERLANE</p>
+		</footer>
+	</div>
+	
