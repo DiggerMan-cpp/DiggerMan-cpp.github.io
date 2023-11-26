@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Digger Fist Maker</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                padding: 20px;
+            }
+            img {
+                max-width: 100%;
+                height: auto;
+                margin-top: 20px;
+                border: 2px solid #fff;
+                border-radius: 10px;
+            }
+            button {
+                margin-top: 20px;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                background-color: #6C757D;
+                color: #FFC107;
+                border: none;
+                border-radius: 5px;
+            }
+            input, select, label {
+                color: #fff;
+                background-color: #6C757D;
+                border: 1px solid #555;
+                border-radius: 3px;
+                padding: 5px;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+            .controls {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            .group {
+                margin: 10px;
+            }
+            a {
+                text-decoration: none;
+                color: #fff;
+                margin-top: 10px;
+                display: inline-block;
+                background-color: #28a745;
+                padding: 10px 20px;
+                border-radius: 5px;
+            }
+            a.back-button {
+                background-color: #007bff;
+            }
+        </style>
+    </head>
+<body>
+    <h1>Digger Fist Maker</h1>
+
+    <a href="https://diggerman-cpp.github.io/" target="_blank">Back</a>
+
+    <div class="controls">
+        <div class="group">
+            <label for="imageInput">Select an image:</label>
+            <input type="file" id="imageInput" accept="image/*">
+        </div>
+
+        <div class="group">
+            <label for="borderType">Border Type:</label>
+            <select id="borderType">
+                <option value="round">Round</option>
+                <option value="square">Square</option>
+            </select>
+        </div>
+
+        <div class="group">
+            <label for="borderThickness">Border Thickness (px):</label>
+            <input type="number" id="borderThickness" value="5">
+        </div>
+
+        <div class="group">
+            <label for="borderColor">Border Color:</label>
+            <input type="color" id="borderColor" value="#fff">
+        </div>
+
+        <div class="group">
+            <label for="clearImage">Make Image Clear:</label>
+            <input type="checkbox" id="clearImage">
+        </div>
+
+        <div class="group">
+            <label for="width">Width:</label>
+            <input type="number" id="width" value="200">
+        </div>
+
+        <div class="group">
+            <label for="height">Height:</label>
+            <input type="number" id="height" value="200">
+        </div>
+
+        <button onclick="applyBorder()">Apply Border</button>
+
+        <img id="outputImage" alt="Output Image">
+
+        <a id="downloadLink" style="display:none;" download="borderedImage.png">Download Image</a>
+    </div>
+
+    <script>
+        function applyBorder() {
+            var imageInput = document.getElementById("imageInput");
+            var borderType = document.getElementById("borderType").value;
+            var borderThickness = document.getElementById("borderThickness").value;
+            var borderColor = document.getElementById("borderColor").value;
+            var clearImage = !document.getElementById("clearImage").checked;
+            var width = document.getElementById("width").value;
+            var height = document.getElementById("height").value;
+
+            if (imageInput.files.length > 0) {
+                var file = imageInput.files[0];
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var img = new Image();
+                    img.src = e.target.result;
+
+                    img.onload = function () {
+                        var canvas = document.createElement("canvas");
+                        var ctx = canvas.getContext("2d");
+
+                        canvas.width = width;
+                        canvas.height = height;
+
+                        ctx.beginPath();
+
+                        if (borderType === "round") {
+                            ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) / 2, 0, 2 * Math.PI);
+                        } else if (borderType === "square") {
+                            var size = Math.min(canvas.width, canvas.height);
+                            ctx.rect((canvas.width - size) / 2, (canvas.height - size) / 2, size, size);
+                        }
+
+                        ctx.clip();
+
+                        if (clearImage) {
+                            ctx.fillStyle = "rgba(0, 0, 0, 0)";
+                            ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        }
+
+                        ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+
+                        ctx.lineWidth = borderThickness;
+                        ctx.strokeStyle = borderColor;
+                        ctx.stroke();
+
+                        var outputImage = document.getElementById("outputImage");
+                        outputImage.src = canvas.toDataURL("image/png");
+
+                        var downloadLink = document.getElementById("downloadLink");
+                        downloadLink.href = canvas.toDataURL("image/png");
+                        downloadLink.style.display = "inline-block";
+                    };
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
